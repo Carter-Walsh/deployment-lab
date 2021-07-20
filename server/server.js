@@ -18,17 +18,16 @@ app.use(rollbar.errorHandler());
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../index.html"));
     rollbar.info("html file served successfully");
+    rollbar.error("this endpoint doesn't exist");
+    rollbar.warning("endpoint does not exits");
+    rollbar.critical("Crash while trying to reach endpoint");
 });
 
 app.get("/endpoint", (req, res) => {
     functionDoesNotExist();
-    rollbar.error("this endpoint doesn't exist");
-    rollbar.warning("endpoint does not exits");
-    rollbar.critical("Crash while trying to reach endpoint");
-    console.log("/endpoint hit");
 });
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server started listening on ${port}`)
