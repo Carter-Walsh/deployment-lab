@@ -23,8 +23,10 @@ app.get("/", (req, res) => {
     rollbar.critical("Crash while trying to reach endpoint");
 });
 
-app.get("/endpoint", (req, res) => {
-    functionDoesNotExist();
+app.get("/devMountain", (req, res) => {
+    rollbar.info("user visited devMountain website");
+    console.log("/devMountain endpoint hit");
+    res.status(200).send("Nice job visiting devMountain website");
 });
 
 const port = process.env.PORT || 3000;
