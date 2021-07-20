@@ -25,6 +25,7 @@ app.get("/endpoint", (req, res) => {
     rollbar.error("this endpoint doesn't exist");
     rollbar.warning("endpoint does not exits");
     rollbar.critical("Crash while trying to reach endpoint");
+    console.log("/endpoint hit");
 });
 
 const port = process.env.PORT || 3000
